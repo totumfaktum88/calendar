@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string("first_name");
             $table->string("last_name");
-            $table->string("phone");
-            $table->string("email");
+            $table->date("start");
+            $table->date("end");
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customer_events');
+        Schema::dropIfExists('customers');
     }
 };

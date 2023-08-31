@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customers', function (Blueprint $table) {
+        Schema::create('background_events', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id");
             $table->date("start");
-            $table->date("end");
+            $table->date("end")->nullable();
             $table->date("weekly");
             $table->date("even");
             $table->date("odd");
+            $table->tinyInteger("day_of_the_week");
             $table->date("expire_at");
             $table->timestamps();
         });
