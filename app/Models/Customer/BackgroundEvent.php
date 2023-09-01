@@ -2,6 +2,7 @@
 
 namespace App\Models\Customer;
 
+use App\Casts\TimeCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,19 +13,16 @@ class BackgroundEvent extends Model
     protected $table = "background_events";
 
     protected $fillable = [
-        "user_id",
-        "start",
-        "end",
-        "weekly",
-        "even",
-        "odd",
-        "expire_at"
+        "start_date",
+        "end_date",
+        "start_time",
+        "end_time",
+        "day_of_week",
     ];
     protected $casts = [
-        "start" => "date",
-        "end" => "date",
-        "odd" => "boolean",
-        "even" => "boolean",
-        "expire_at" => "date"
+        "start_date" => "date",
+        "end_date" => "date",
+        "start_time" => TimeCast::class,
+        "end_time" => TimeCast::class,
     ];
 }

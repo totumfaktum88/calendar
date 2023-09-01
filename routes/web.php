@@ -13,4 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/', \App\Http\Controllers\CalendarController::class);
+Route::resource(
+    '/',
+    \App\Http\Controllers\CalendarController::class
+)->names("calendar")
+->middleware('no-cache', ['only' => ['index']]);

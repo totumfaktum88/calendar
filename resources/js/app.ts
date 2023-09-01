@@ -2,7 +2,7 @@ import { createInertiaApp, Link, Head } from '@inertiajs/vue3';
 import { createApp, h } from 'vue';
 import { ZiggyVue } from 'ziggy-vue';
 import { Ziggy } from './ziggy.js';
-import { Quasar } from 'quasar';
+import { Quasar, Notify } from 'quasar';
 import "./bootstrap";
 
 // Import icon libraries
@@ -27,7 +27,14 @@ createInertiaApp({
             .mixin({ methods: { route } })
             .use(plugin)
             .use(ZiggyVue, Ziggy)
-            .use(Quasar, {plugins: {}});
+            .use(Quasar, {
+                plugins: {
+                    Notify
+                },
+                config: {
+                    notify: {}/* look at QuasarConfOptions from the API card */
+                }
+            });
 
         app.mount(el);
     },

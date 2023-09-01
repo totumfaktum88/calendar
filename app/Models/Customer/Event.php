@@ -2,6 +2,7 @@
 
 namespace App\Models\Customer;
 
+use Database\Factories\Customer\EventFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,11 +19,19 @@ class Event extends Model
         "end",
     ];
     protected $casts = [
-        "start" => "date",
-        "end" => "date",
+        "start" => "datetime",
+        "end" => "datetime",
     ];
 
+    /**
+     * Create a new factory instance for the model.
+     */
+    protected static function newFactory()
+    {
+        return EventFactory::new();
+    }
+
     public function getFullNameAttribute() {
-        return $this->attributes["first_name"]." ".$this->attributes["first_name"];
+        return $this->attributes["first_name"]." ".$this->attributes["last_name"];
     }
 }

@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('background_events', function (Blueprint $table) {
             $table->id();
-            $table->date("start");
-            $table->date("end")->nullable();
-            $table->date("weekly");
-            $table->date("even");
-            $table->date("odd");
-            $table->tinyInteger("day_of_the_week");
-            $table->date("expire_at");
+            $table->date("start_date");
+            $table->date("end_date")->nullable();
+            $table->time("start_time");
+            $table->time("end_time");
+            //$table->date("weekly");
+            $table->tinyInteger("day_of_week")->nullable();
             $table->timestamps();
         });
     }
